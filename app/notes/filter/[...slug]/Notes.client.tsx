@@ -11,14 +11,18 @@ import NoteForm from '@/components/NoteForm/NoteForm';
 import Modal from '@/components/Modal/Modal';
 import { useDebouncedCallback } from 'use-debounce';
 
-const Notes = () => {
+interface NotesProps {
+  tag: string;
+}
+
+const Notes = ({ tag }: NotesProps) => {
   const [query, setQuery] = useState('');
   const [page, setPage] = useState(1);
   const [isOpen, setIsOpen] = useState(false);
 
   const { data, isSuccess } = useQuery({
-    queryKey: ['notes', query, page],
-    queryFn: () => fetchNotes(query, page),
+    queryKey: ['notes', query, page, tag],
+    queryFn: () => fetchNotes(query, page, tag),
     placeholderData: keepPreviousData,
     refetchOnMount: false,
   });
