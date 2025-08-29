@@ -18,7 +18,7 @@ export const fetchNotes = async (
 ): Promise<FetchNotesResponse> => {
   const { data } = await axios.get<FetchNotesResponse>('/notes', {
     params: {
-      tag,
+      ...(tag && { tag }),
       page,
       search,
       perPage: 8,
