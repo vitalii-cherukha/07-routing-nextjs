@@ -15,13 +15,13 @@ const ModalPage = async ({ params }: NotePreviewPageProps) => {
   const queryClient = new QueryClient();
 
   await queryClient.prefetchQuery({
-    queryKey: ['task', id],
+    queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
   });
 
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NotePreviewPage />;
+      <NotePreviewPage />
     </HydrationBoundary>
   );
 };

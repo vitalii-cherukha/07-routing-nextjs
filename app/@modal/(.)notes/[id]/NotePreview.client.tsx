@@ -12,7 +12,7 @@ const NotePreviewPage = () => {
   const handleClose = () => router.back();
 
   const { id } = useParams<{ id: string }>();
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error } = useQuery({
     queryKey: ['note', id],
     queryFn: () => fetchNoteById(id),
     refetchOnMount: false,
@@ -22,6 +22,7 @@ const NotePreviewPage = () => {
     <Modal onClose={handleClose}>
       {data && <NotePreview note={data} />}
       {isLoading && <p>Loading...</p>}
+      {error && <p>Error 😅</p>}
     </Modal>
   );
 };
