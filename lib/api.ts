@@ -21,7 +21,7 @@ export const fetchNotes = async (
       tag,
       page,
       search,
-      perPage: 12,
+      perPage: 8,
     },
   });
   return data;
