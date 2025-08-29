@@ -16,9 +16,7 @@ const ModalPage = async ({ params }: NotePreviewPageProps) => {
 
   await queryClient.prefetchQuery({
     queryKey: ['task', id],
-    queryFn: () => {
-      fetchNoteById(id);
-    },
+    queryFn: () => fetchNoteById(id),
   });
 
   return (
